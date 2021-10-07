@@ -31,11 +31,11 @@ button {
     transition: 0.2s all;
 }
 
-button:hover {
-    opacity: 0.9;
+button:active {
+    border: 1px solid black;
 }
 
-button:active {
+button:hover {
     transform: scale(0.98);
     box-shadow: none;
 }
@@ -46,9 +46,14 @@ button.btn-blue {
     color: white;
 }
 
-button.btn-blue:active {
+button.btn-blue:hover {
     background: white;
     border: 1px solid var(--blue);
+    color: var(--blue);
+}
+
+button.btn-blue:active {
+    border: 1px solid var(--black);
     color: var(--blue);
 }
 
@@ -503,6 +508,11 @@ p {
         color: var(--red);
         border: 1px solid var(--red);
     }
+    .contact-controller button:active {
+        background: white;
+        color: var(--red);
+        border: 1px solid var(--black);
+    }
     /* FOOTER */
     footer {
         background: var(--black);
@@ -570,12 +580,25 @@ p {
         padding: 0;
         top: 0;
         z-index: 10;
+        background-color: rgba(36, 42, 69, 0.98);
     }
     .modal.active .footer-disable-link {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    .modal.active .footer-disable-link a {
+        border: 1px solid white;
+        width: 100%;
+        padding: 10px 0;
+    }
+    .modal.active .footer-disable-link a:hover {
+        border: 1px solid var(--red);
+    }
+    .modal.active .logo-and-close-wrapper {
+        display: flex;
+        padding: 0 20px 20px 23px;
     }
     .modal.active .logo {
         display: flex;
@@ -598,21 +621,16 @@ p {
     .modal.active .links-footer li {
         border-top: 1px solid rgb(255, 255, 255, 0.1);
         margin: 0;
-        padding: 10px;
+        padding: 0px;
         width: 100%;
-        height: 80px;
+        height: 70px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    .modal.active .links-footer li:hover {
-        border: 1px solid white;
-        cursor: pointer;
-    }
     .modal.active .links-footer li:hover a {
-        color: white;
-        font-weight: 700;
+        color: var(--red);
     }
 }
 
@@ -631,7 +649,7 @@ p {
     }
     nav .links li {
         text-decoration: none;
-        margin-left: 5px;
+        margin-left: 10px;
         padding: 10px;
         cursor: pointer;
         border: 1px solid white;
@@ -641,6 +659,19 @@ p {
         text-decoration: none;
         color: var(--black);
         text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+    nav .links li .login-btn {
+        background: var(--red);
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: white;
+        border: 1px solid white;
+    }
+    nav .links li:hover .login-btn {
+        background: var(--white);
+        color: var(--red);
+        border: 1px solid var(--red);
     }
     nav .links li:active {
         border: 1px solid var(--red);
@@ -720,14 +751,34 @@ p {
         height: 40vh;
         align-items: center;
         justify-content: space-around;
+        margin-bottom: 0;
     }
     .image-background-design-slide {
         width: 45%;
     }
+    .image-background-design-slide img {
+        position: relative;
+        z-index: 3;
+        right: -30px;
+        height: 300px;
+        top: -30px;
+    }
+    .image-background-design-slide .background-template {
+        background: var(--blue);
+        display: block;
+        width: 10000px;
+        height: 250px;
+        position: relative;
+        top: -250px;
+        left: -9700px;
+        border-radius: 200px;
+    }
     .pano_desc {
-        width: 45%;
+        width: 35%;
         display: flex;
         flex-direction: column;
+        position: relative;
+        top: -30px;
     }
     .pano_desc p, .pano_desc h2 {
         text-align: left;
@@ -737,10 +788,14 @@ p {
         margin-top: 20px;
         letter-spacing: 2px;
     }
+    .pano_desc p {
+        margin: 15px 0;
+    }
     .pano_desc button {
         display: block;
         box-shadow: 0px 4px 10px -5px rgba(128, 128, 128, 0.4);
         margin-left: 0;
+        width: 130px;
     }
     /* SECTION THREE */
     .extensions__all-cards {
@@ -848,6 +903,12 @@ p {
     .faq-sign p {
         padding: 20px 0;
         width: 60%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .image-background-design-slide img {
+        width: 420px;
     }
 }
 
